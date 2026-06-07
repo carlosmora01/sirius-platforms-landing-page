@@ -4,29 +4,41 @@
    ========================================================================= */
 
 :root {
-  /* --- Space backgrounds --- */
-  --bg:          #04050a;
-  --bg-2:        #070a16;
-  --surface:     #0a0f1f;
-  --surface-2:   #0f1730;
-  --surface-3:   #131d3a;
+  /* --- Brand palette (Envivienda violet) --- */
+  --primary-50:  #f5f3ff;
+  --primary-100: #ede9fe;
+  --primary-200: #ddd6fe;
+  --primary-300: #c4b5fd;
+  --primary-400: #a78bfa;
+  --primary-500: #8667ff;
+  --primary-600: #7c3aed;
+  --primary-700: #6d28d9;
+  --primary-800: #5b21b6;
+  --primary-900: #4c1d95;
+
+  /* --- Space backgrounds (deep violet-black) --- */
+  --bg:          #06040e;
+  --bg-2:        #0a0718;
+  --surface:     #0f0a20;
+  --surface-2:   #160f30;
+  --surface-3:   #1c143c;
 
   /* --- Lines --- */
-  --border:        rgba(120, 165, 255, 0.10);
-  --border-strong: rgba(120, 175, 255, 0.26);
+  --border:        rgba(150, 130, 255, 0.10);
+  --border-strong: rgba(160, 140, 255, 0.26);
 
   /* --- Text --- */
-  --text:       #eaeefc;
-  --text-dim:   #99a3c4;
-  --text-faint: #5e688a;
+  --text:       #ece9fb;
+  --text-dim:   #a39ec8;
+  --text-faint: #6c6594;
 
-  /* --- Sirius accent (blue-white star) --- */
-  --accent:      #5ec8ff;
-  --accent-2:    #3a78ff;
-  --accent-soft: rgba(94, 200, 255, 0.12);
-  --glow:        rgba(94, 200, 255, 0.45);
-  --gold:        #ffd9a0;
-  --star:        #ffffff;
+  /* --- Accent (violet star) --- */
+  --accent:        #8667ff;   /* primary-500 */
+  --accent-bright: #a78bfa;   /* primary-400 */
+  --accent-2:      #6d28d9;   /* primary-700 */
+  --accent-soft:   rgba(134, 103, 255, 0.13);
+  --glow:          rgba(134, 103, 255, 0.45);
+  --star:          #ffffff;
 
   /* --- Typography --- */
   --font-display: "Fraunces", "Times New Roman", serif;
@@ -72,9 +84,9 @@ body::before {
   z-index: -3;
   pointer-events: none;
   background:
-    radial-gradient(120% 80% at 72% -10%, rgba(58, 120, 255, 0.18), transparent 55%),
-    radial-gradient(90% 60% at 12% 8%, rgba(94, 200, 255, 0.10), transparent 50%),
-    radial-gradient(140% 120% at 50% 120%, rgba(30, 60, 140, 0.20), transparent 60%),
+    radial-gradient(120% 80% at 72% -10%, rgba(124, 58, 237, 0.22), transparent 55%),
+    radial-gradient(90% 60% at 12% 8%, rgba(134, 103, 255, 0.12), transparent 50%),
+    radial-gradient(140% 120% at 50% 120%, rgba(76, 29, 149, 0.26), transparent 60%),
     linear-gradient(180deg, var(--bg), var(--bg-2) 60%, var(--bg));
 }
 
@@ -91,7 +103,7 @@ body::after {
 }
 
 ::selection {
-  background: rgba(94, 200, 255, 0.28);
+  background: rgba(134, 103, 255, 0.32);
   color: #fff;
 }
 
@@ -144,7 +156,7 @@ p { margin: 0; }
 }
 
 .text-grad {
-  background: linear-gradient(120deg, #ffffff 10%, var(--accent) 60%, var(--accent-2));
+  background: linear-gradient(120deg, #ffffff 0%, var(--accent-bright) 45%, var(--accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -196,9 +208,9 @@ section {
 }
 
 .btn-primary {
-  color: #04060e;
-  background: linear-gradient(180deg, #cfeeff, var(--accent));
-  box-shadow: 0 10px 30px -10px var(--glow), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  background: linear-gradient(180deg, var(--accent-bright), var(--accent) 55%, var(--accent-2));
+  box-shadow: 0 10px 30px -10px var(--glow), inset 0 0 0 1px rgba(255, 255, 255, 0.28);
 }
 .btn-primary:hover {
   transform: translateY(-2px);

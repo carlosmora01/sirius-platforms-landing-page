@@ -58,11 +58,15 @@ Showcased on the site to convey engineering maturity:
 
 **Cosmic / dark** theme, inspired by Sirius — the brightest star in the night sky.
 
-- Deep dark-navy / near-black backgrounds.
-- Bright blue / cyan accents for highlights, buttons and links.
+- Deep violet-black backgrounds with nebula-like glows.
+- **Violet accent** (`#8667ff`), shared with the Envivienda brand palette
+  (`--primary-50` … `--primary-900`), for a consistent group identity.
 - Subtle starfield / glow details for a premium, technological feel.
 - Clean, modern typography with generous spacing.
 - Fully responsive (mobile-first).
+
+The company mark is a four-point **Sirius star**; the Envivienda house emblem
+(`public/logo.png`, `public/logo-dark.png`) appears on the Envivienda product card.
 
 ## 6. Page structure (single page, scroll)
 
