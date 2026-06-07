@@ -1,0 +1,214 @@
+---
+import Nav from "./Nav.astro";
+---
+
+<Nav />
+
+<section class="hero" aria-labelledby="hero-title">
+  <!-- The star: Sirius, with bloom + diffraction spikes -->
+  <div class="sirius" aria-hidden="true">
+    <span class="orbit orbit-a"></span>
+    <span class="orbit orbit-b"></span>
+    <span class="bloom"></span>
+    <span class="spikes"></span>
+    <span class="core"></span>
+  </div>
+
+  <div class="wrap hero-inner">
+    <p class="eyebrow fade" style="--delay:80ms">
+      Proptech Software Studio · Delaware, USA
+    </p>
+
+    <h1 id="hero-title" class="hero-title">
+      <span class="fade" style="--delay:220ms">Software that powers</span>
+      <span class="fade" style="--delay:360ms">the <em class="text-grad">future of real estate</em>.</span>
+    </h1>
+
+    <p class="lead hero-lead fade" style="--delay:520ms">
+      Sirius Platforms, Inc. designs, builds and operates scalable, cloud-native
+      software for the real estate industry — from property portals to agency CRMs —
+      and partners with businesses to engineer custom products end to end.
+    </p>
+
+    <div class="hero-cta fade" style="--delay:660ms">
+      <a class="btn btn-primary" href="mailto:siriusplatforms@gmail.com">
+        Get in touch
+        <span class="arrow">→</span>
+      </a>
+      <a class="btn btn-ghost" href="#products">See what we build</a>
+    </div>
+
+    <dl class="hero-stats fade" style="--delay:820ms">
+      <div>
+        <dt>Focus</dt>
+        <dd>Proptech</dd>
+      </div>
+      <div>
+        <dt>Built on</dt>
+        <dd>AWS · Cloud-native</dd>
+      </div>
+      <div>
+        <dt>Based in</dt>
+        <dd>Wilmington, DE</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: clamp(5rem, 13vw, 9rem) clamp(5rem, 12vw, 8rem);
+    overflow: hidden;
+  }
+
+  .hero-inner { position: relative; z-index: 2; }
+
+  .hero-title {
+    font-size: clamp(2.7rem, 7.4vw, 5.6rem);
+    font-weight: 400;
+    margin-top: 1.4rem;
+    max-width: 16ch;
+  }
+  .hero-title span { display: block; }
+  .hero-title em { font-style: italic; }
+
+  .hero-lead { margin-top: 1.7rem; }
+
+  .hero-cta {
+    margin-top: 2.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+
+  .hero-stats {
+    margin: 3.6rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1.6rem, 5vw, 3.4rem);
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--border);
+    max-width: 640px;
+  }
+  .hero-stats dt {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  .hero-stats dd {
+    margin: 0.45rem 0 0;
+    font-family: var(--font-display);
+    font-size: 1.18rem;
+    color: var(--text);
+  }
+
+  /* ---- The Sirius star ---- */
+  .sirius {
+    position: absolute;
+    top: clamp(2rem, 8vw, 5rem);
+    right: clamp(-3rem, 4vw, 7rem);
+    width: 340px;
+    height: 340px;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .core {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 10px;
+    height: 10px;
+    margin: -5px 0 0 -5px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 18px 6px rgba(255, 255, 255, 0.9), 0 0 60px 18px var(--glow);
+    animation: pulse 4.5s var(--ease) infinite;
+  }
+  .bloom {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(120, 200, 255, 0.32) 12%,
+      rgba(58, 120, 255, 0.14) 32%,
+      transparent 62%
+    );
+    animation: pulse 4.5s var(--ease) infinite;
+  }
+  .spikes,
+  .spikes::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(190, 225, 255, 0.85) 48%,
+      #fff 50%,
+      rgba(190, 225, 255, 0.85) 52%,
+      transparent
+    );
+  }
+  .spikes {
+    width: 320px;
+    height: 2px;
+    transform: translate(-50%, -50%);
+    animation: pulse 4.5s var(--ease) infinite;
+  }
+  .spikes::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .orbit {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .orbit-a { width: 200px; height: 200px; border-color: rgba(120, 175, 255, 0.16); }
+  .orbit-b { width: 320px; height: 320px; border-color: rgba(120, 175, 255, 0.08); }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.78; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.06); }
+  }
+  /* bloom/core/orbit use full-element transforms; keep their own keyframes */
+  .core, .bloom { animation-name: pulseSoft; }
+  @keyframes pulseSoft {
+    0%, 100% { opacity: 0.85; }
+    50%      { opacity: 1; }
+  }
+
+  /* ---- staggered entrance ---- */
+  .fade {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: rise 1s var(--ease) forwards;
+    animation-delay: var(--delay, 0ms);
+  }
+  @keyframes rise {
+    to { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 760px) {
+    .sirius {
+      width: 240px;
+      height: 240px;
+      top: -2rem;
+      right: -4rem;
+      opacity: 0.85;
+    }
+    .spikes { width: 230px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade { opacity: 1; transform: none; animation: none; }
+  }
+</style>

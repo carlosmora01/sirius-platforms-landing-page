@@ -1,0 +1,49 @@
+---
+/**
+ * Parallax star field. Star positions are generated at build time so the
+ * markup ships as static CSS box-shadows (no runtime JS, no layout cost).
+ */
+function stars(count: number, color: string): string {
+  const spread = 2560;
+  const shadows: string[] = [];
+  for (let i = 0; i < count; i++) {
+    const x = Math.floor(Math.random() * spread);
+    const y = Math.floor(Math.random() * 2000);
+    shadows.push(`${x}px ${y}px ${color}`);
+  }
+  return shadows.join(", ");
+}
+
+const small = stars(480, "rgba(255,255,255,0.7)");
+const medium = stars(160, "rgba(214,234,255,0.85)");
+const large = stars(46, "#ffffff");
+---
+
+<div class="starfield" aria-hidden="true">
+  <div class="star-layer s-small"></div>
+  <div class="star-layer s-medium"></div>
+  <div class="star-layer s-large"></div>
+</div>
+
+<style define:vars={{ small, medium, large }}>
+  .s-small {
+    box-shadow: var(--small);
+    animation-duration: 260s;
+  }
+  .s-medium {
+    width: 2px;
+    height: 2px;
+    box-shadow: var(--medium);
+    animation-duration: 180s;
+  }
+  .s-large {
+    width: 2px;
+    height: 2px;
+    box-shadow: var(--large);
+    animation-duration: 120s;
+    animation-name: drift, twinkle;
+    animation-duration: 120s, 5s;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+  }
+</style>

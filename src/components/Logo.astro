@@ -1,0 +1,53 @@
+---
+interface Props {
+  size?: number;
+  withText?: boolean;
+}
+const { size = 26, withText = true } = Astro.props;
+---
+
+<a class="logo" href="#top" aria-label="Sirius Platforms — home">
+  <span class="mark" style={`--s:${size}px`}>
+    <svg viewBox="0 0 64 64" width={size} height={size} fill="none" aria-hidden="true">
+      <path
+        d="M32 2 C34 22 42 30 62 32 C42 34 34 42 32 62 C30 42 22 34 2 32 C22 30 30 22 32 2 Z"
+        fill="url(#sg)"
+      />
+      <circle cx="32" cy="32" r="3.2" fill="#fff" />
+      <defs>
+        <radialGradient id="sg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffffff" />
+          <stop offset="40%" stop-color="#bfe6ff" />
+          <stop offset="100%" stop-color="#5ec8ff" />
+        </radialGradient>
+      </defs>
+    </svg>
+  </span>
+  {withText && (
+    <span class="wordmark">Sirius<span class="dim"> Platforms</span></span>
+  )}
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.62em;
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+  .mark {
+    display: grid;
+    place-items: center;
+    filter: drop-shadow(0 0 8px var(--glow));
+    transition: transform 0.5s var(--ease), filter 0.5s var(--ease);
+  }
+  .logo:hover .mark {
+    transform: rotate(90deg) scale(1.05);
+    filter: drop-shadow(0 0 14px var(--glow));
+  }
+  .dim { color: var(--text-dim); font-weight: 400; }
+</style>

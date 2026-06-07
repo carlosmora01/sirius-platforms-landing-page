@@ -1,0 +1,114 @@
+---
+---
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="card contact-card" data-reveal>
+      <span class="contact-glow" aria-hidden="true"></span>
+
+      <div class="contact-inner">
+        <div class="contact-lead">
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="contact-title">Let's build something that lasts.</h2>
+          <p class="lead">
+            Have a proptech idea, a product to scale, or a project in mind?
+            We'd love to hear from you.
+          </p>
+
+          <a class="btn btn-primary contact-btn" href="mailto:siriusplatforms@gmail.com">
+            Email us
+            <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <address class="contact-info">
+          <div class="info-block">
+            <span class="info-label">Email</span>
+            <a class="info-value link" href="mailto:siriusplatforms@gmail.com">
+              siriusplatforms@gmail.com
+            </a>
+          </div>
+          <div class="info-block">
+            <span class="info-label">Registered office</span>
+            <span class="info-value">
+              Sirius Platforms, Inc.<br />
+              800 North King Street, St 304 #3623<br />
+              Wilmington, DE 19801<br />
+              United States
+            </span>
+          </div>
+        </address>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-card {
+    padding: clamp(2rem, 5vw, 4rem);
+    position: relative;
+  }
+  .contact-glow {
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--glow), transparent 60%);
+    opacity: 0.5;
+    pointer-events: none;
+    filter: blur(20px);
+  }
+  .contact-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .contact-title {
+    font-size: clamp(2rem, 4.4vw, 3.2rem);
+    font-weight: 400;
+    margin: 1rem 0 1.2rem;
+    max-width: 16ch;
+  }
+  .contact-btn { margin-top: 2rem; }
+
+  .contact-info {
+    font-style: normal;
+    display: grid;
+    gap: 1.8rem;
+    padding-left: clamp(0rem, 3vw, 2rem);
+    border-left: 1px solid var(--border);
+  }
+  .info-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.6rem;
+  }
+  .info-value {
+    color: var(--text-dim);
+    line-height: 1.65;
+    font-size: 0.98rem;
+  }
+  .info-value.link {
+    color: var(--accent);
+    transition: color 0.3s var(--ease);
+  }
+  .info-value.link:hover { color: #fff; }
+
+  @media (max-width: 760px) {
+    .contact-inner { grid-template-columns: 1fr; }
+    .contact-info {
+      border-left: none;
+      border-top: 1px solid var(--border);
+      padding-left: 0;
+      padding-top: 1.8rem;
+    }
+  }
+</style>

@@ -1,0 +1,34 @@
+# build output
+dist/
+.output/
+
+# dependencies
+node_modules/
+
+# astro
+.astro/
+
+# environment
+.env
+.env.production
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# os / editor
+.DS_Store
+Thumbs.db
+*.local
+
+# claude code / agent tooling (not part of the site)
+.agents/
+skills-lock.json
+.claude/settings.local.json
+
+# local verification artifacts
+shot*.png
+shot*.mjs
+preview.log

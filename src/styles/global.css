@@ -1,0 +1,336 @@
+/* =========================================================================
+   Sirius Platforms — Design System
+   Cosmic / dark theme · Sirius blue-white accent
+   ========================================================================= */
+
+:root {
+  /* --- Space backgrounds --- */
+  --bg:          #04050a;
+  --bg-2:        #070a16;
+  --surface:     #0a0f1f;
+  --surface-2:   #0f1730;
+  --surface-3:   #131d3a;
+
+  /* --- Lines --- */
+  --border:        rgba(120, 165, 255, 0.10);
+  --border-strong: rgba(120, 175, 255, 0.26);
+
+  /* --- Text --- */
+  --text:       #eaeefc;
+  --text-dim:   #99a3c4;
+  --text-faint: #5e688a;
+
+  /* --- Sirius accent (blue-white star) --- */
+  --accent:      #5ec8ff;
+  --accent-2:    #3a78ff;
+  --accent-soft: rgba(94, 200, 255, 0.12);
+  --glow:        rgba(94, 200, 255, 0.45);
+  --gold:        #ffd9a0;
+  --star:        #ffffff;
+
+  /* --- Typography --- */
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-body:    "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono:    "Space Mono", "Courier New", monospace;
+
+  /* --- Layout --- */
+  --maxw: 1180px;
+  --pad:  clamp(1.25rem, 5vw, 3.5rem);
+  --radius: 18px;
+
+  /* --- Easing --- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Atmospheric glows layered behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 72% -10%, rgba(58, 120, 255, 0.18), transparent 55%),
+    radial-gradient(90% 60% at 12% 8%, rgba(94, 200, 255, 0.10), transparent 50%),
+    radial-gradient(140% 120% at 50% 120%, rgba(30, 60, 140, 0.20), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg-2) 60%, var(--bg));
+}
+
+/* Grain / noise overlay for texture */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: rgba(94, 200, 255, 0.28);
+  color: #fff;
+}
+
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+
+/* =========================================================================
+   Typography helpers
+   ========================================================================= */
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  margin: 0;
+  font-optical-sizing: auto;
+}
+
+p { margin: 0; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent));
+}
+
+.section-title {
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  margin-top: 1.1rem;
+  max-width: 18ch;
+}
+
+.lead {
+  color: var(--text-dim);
+  font-size: clamp(1.02rem, 1.7vw, 1.22rem);
+  line-height: 1.7;
+  max-width: 56ch;
+}
+
+.text-grad {
+  background: linear-gradient(120deg, #ffffff 10%, var(--accent) 60%, var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* =========================================================================
+   Layout
+   ========================================================================= */
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+
+section {
+  position: relative;
+  padding-block: clamp(5rem, 11vw, 9rem);
+}
+
+.section-head { max-width: 60ch; }
+
+/* hairline divider between sections */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+}
+
+/* =========================================================================
+   Buttons
+   ========================================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.96rem;
+  letter-spacing: 0.01em;
+  padding: 0.92em 1.5em;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease),
+              background 0.35s var(--ease), border-color 0.35s var(--ease);
+  will-change: transform;
+}
+
+.btn-primary {
+  color: #04060e;
+  background: linear-gradient(180deg, #cfeeff, var(--accent));
+  box-shadow: 0 10px 30px -10px var(--glow), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px -12px var(--glow), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.btn-ghost {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(6px);
+}
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  color: #fff;
+  background: var(--accent-soft);
+}
+
+.arrow { transition: transform 0.35s var(--ease); }
+.btn:hover .arrow { transform: translateX(4px); }
+
+/* =========================================================================
+   Cards / surfaces
+   ========================================================================= */
+
+.card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0)) ,
+    var(--surface);
+  overflow: hidden;
+  transition: transform 0.45s var(--ease), border-color 0.45s var(--ease),
+              box-shadow 0.45s var(--ease);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(140deg, var(--border-strong), transparent 40%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.45s var(--ease);
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8), 0 0 50px -20px var(--glow);
+}
+.card:hover::before { opacity: 1; }
+
+/* =========================================================================
+   Scroll-reveal
+   ========================================================================= */
+
+/* Content is visible by default; only hidden-for-animation when JS is present,
+   so nothing ever disappears if scripts fail or are disabled (crawlers, etc.). */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: var(--delay, 0ms);
+}
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* =========================================================================
+   Star field (parallax)
+   ========================================================================= */
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+}
+.star-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+  animation: drift linear infinite;
+}
+.star-layer::after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  box-shadow: inherit;
+}
+
+@keyframes drift {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-2000px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 1; }
+}
+
+/* =========================================================================
+   Accessibility / motion
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .js [data-reveal] { opacity: 1; transform: none; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

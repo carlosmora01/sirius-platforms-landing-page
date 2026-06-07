@@ -1,0 +1,80 @@
+---
+import Logo from "./Logo.astro";
+
+const year = new Date().getFullYear();
+const nav = [
+  { label: "About", href: "#about" },
+  { label: "Products", href: "#products" },
+  { label: "Capabilities", href: "#capabilities" },
+  { label: "Technology", href: "#technology" },
+  { label: "Contact", href: "#contact" },
+];
+---
+
+<footer class="footer">
+  <div class="divider"></div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <Logo />
+      <p class="footer-tag">Software that powers the future of real estate.</p>
+      <p class="footer-addr">
+        800 North King Street, St 304 #3623 · Wilmington, DE 19801 · USA
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      {nav.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+  </div>
+
+  <div class="wrap footer-base">
+    <p>© {year} Sirius Platforms, Inc. All rights reserved.</p>
+    <p class="footer-loc">Wilmington · Delaware · USA</p>
+  </div>
+</footer>
+
+<style>
+  .footer { padding-top: 3.5rem; }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    padding-block: 3rem 2.5rem;
+  }
+  .footer-tag {
+    margin-top: 1.1rem;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    max-width: 32ch;
+  }
+  .footer-addr {
+    margin-top: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.04em;
+    color: var(--text-faint);
+  }
+  .footer-nav {
+    display: grid;
+    gap: 0.85rem;
+    align-content: start;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+  }
+  .footer-nav a { transition: color 0.3s var(--ease); }
+  .footer-nav a:hover { color: var(--accent); }
+
+  .footer-base {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-block: 1.6rem 2.4rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-faint);
+  }
+  .footer-loc { font-family: var(--font-mono); letter-spacing: 0.08em; }
+</style>

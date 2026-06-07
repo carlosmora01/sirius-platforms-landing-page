@@ -1,0 +1,96 @@
+---
+const stack = [
+  { name: "AWS", role: "Cloud infrastructure", code: "CLD" },
+  { name: "Flutter", role: "Cross-platform apps", code: "APP" },
+  { name: "Node.js", role: "Backend services", code: "API" },
+  { name: "Microservices", role: "Modular, deployable", code: "SVC" },
+  { name: "Scalable Architecture", role: "Built to grow", code: "SCL" },
+];
+---
+
+<section id="technology" class="tech">
+  <div class="wrap tech-grid">
+    <div class="tech-head" data-reveal>
+      <p class="eyebrow">Our stack</p>
+      <h2 class="section-title">Engineered with proven, modern technology.</h2>
+      <p class="lead tech-lead">
+        We build on a battle-tested foundation — cloud-native by default, modular
+        by design, and ready to scale as our products and clients grow.
+      </p>
+    </div>
+
+    <ul class="tech-list">
+      {stack.map((t, i) => (
+        <li class="tech-item" data-reveal style={`--delay:${i * 70}ms`}>
+          <span class="tech-code">{t.code}</span>
+          <span class="tech-name">{t.name}</span>
+          <span class="tech-role">{t.role}</span>
+          <span class="tech-star" aria-hidden="true">✦</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .tech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .tech-lead { margin-top: 1.5rem; }
+
+  .tech-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--border);
+  }
+  .tech-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.15rem 0.4rem;
+    border-bottom: 1px solid var(--border);
+    transition: padding 0.4s var(--ease), background 0.4s var(--ease);
+  }
+  .tech-item:hover {
+    padding-inline: 1rem;
+    background: linear-gradient(90deg, var(--accent-soft), transparent);
+  }
+  .tech-code {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 0.3em 0.55em;
+  }
+  .tech-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    color: var(--text);
+  }
+  .tech-role {
+    font-size: 0.86rem;
+    color: var(--text-faint);
+    text-align: right;
+  }
+  .tech-star {
+    display: none;
+    color: var(--accent);
+  }
+  .tech-item:hover .tech-star { display: inline; }
+  .tech-item:hover .tech-role { display: none; }
+
+  @media (max-width: 820px) {
+    .tech-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 440px) {
+    .tech-role { display: none; }
+    .tech-item { grid-template-columns: auto 1fr; }
+  }
+</style>
